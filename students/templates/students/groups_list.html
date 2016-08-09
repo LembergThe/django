@@ -1,0 +1,91 @@
+{% extends "students/base.html" %}
+{% load static from staticfiles %}
+
+{% block meta_title %}Групи{% endblock meta_title %}
+
+{% block title %}База Груп{% endblock title %}
+
+{% block navigate%}
+	<strong>Група:</strong>
+	<select>
+		<option value="">Усі Групи</option>
+		<option value="">МтМ - 21, Подоба Віталій (No 254)</option>
+		<option value="">МтМ - 22, Корост Андрій (No 2123)</option>
+	</select>
+{% endblock navigate%}
+{% block content %}
+<a class="btn btn-primary" href="{% url "group_add" %}">Додати Групу</a>
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<th><a href="">#</a></th>
+			<th>Інститут &uarr;</th>
+			<th>Кафедра &uarr;</th>
+			<th><a href="">Назва &uarr;</a></th>
+			<th>Кількість студентів</th>
+			<th>Рейтинг успішності</th>
+			<th>Дії</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for group in groups %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>
+				<a href="{% url "institute" %}">
+					{{ group.institute }}
+				</a>
+			</td>
+			<td>
+				<a href="{% url "department" %}">
+					{{ group.department }}
+				</a>
+			</td>
+			<td>
+				<a href="{% url "group_edit" group.id %}">
+				{{ group.name }}
+				</a>
+			</td>
+			<td>{{ group.students }}</td>
+			<td>{{ group.success }}</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Дія
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a href="{% url "group_edit" group.id %}">
+								Редагувати
+							</a>
+						</li>
+						<li>
+							<a href="{% url "group_journal" group.id %}">
+							Відвідування
+							</a>
+						</li>
+						<li>
+							<a href="{% url "group_delete" group.id %}">
+							Видалити
+							</a>
+						</li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<nav>
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<li><a href="#">1</a></li>
+		<li class="active"><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul>
+</nav>
+{% endblock content%}
