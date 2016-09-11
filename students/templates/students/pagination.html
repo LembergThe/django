@@ -1,0 +1,15 @@
+
+<nav>
+	<ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        {% for p in 'xxxxxxxxxx'%}
+            {% ifequal page forloop.counter%}
+            <li><a href="#" {% if page == forloop.counter %}
+                   class = "active"
+                   {% endif %} >{{forloop.counter}}</a></li>
+            {% endifequal%}
+        {% endfor%}
+        <li><a href="#">&raquo;</a></li>
+
+	</ul>
+</nav>
