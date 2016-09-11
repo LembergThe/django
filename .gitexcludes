@@ -1,1 +1,1 @@
-*.pyc, *∼,*.egg-info, *.mo, *.egg
+*.pyc, *∼,*.egg-info, *.mo, *.egg, students/__pycache__/
