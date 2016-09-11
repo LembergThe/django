@@ -6,7 +6,7 @@
 {% block title %}База Груп{% endblock title %}
 
 {% block navigate%}
-	<strong>Група:</strong>
+	<strong>Група:</strong><br>
 	<select>
 		<option value="">Усі Групи</option>
 		<option value="">МтМ - 21, Подоба Віталій (No 254)</option>
@@ -77,15 +77,5 @@
 		{% endfor %}
 	</tbody>
 </table>
-<nav>
-	<ul class="pagination">
-		<li><a href="#">&laquo;</a></li>
-		<li><a href="#">1</a></li>
-		<li class="active"><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">&raquo;</a></li>
-	</ul>
-</nav>
+{% include "students/pagination.html" with page=1 pages=10 %}
 {% endblock content%}

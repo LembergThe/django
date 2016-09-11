@@ -7,7 +7,7 @@
 	<meta name="description"
 	value="Система Обліку Студентів Навчального Закладу" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/main.css' %}">
 	{% block extra_css %}{% endblock extra_css %}
 </head>
 <body>
@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-8 col-md-8">
-				<h1>>Юля Молодець</h1>
+				<h1>>Юля Ne molodec</h1>
 			</div>
 			<div class="col-xs-4 col-md-4" id="group-selector">
                 {% block navigate%}
@@ -31,9 +31,19 @@
 		<div class="row" id="sub-header">
 			<div class="col-xs-12 col-md-12">
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href={% url "home" %}>Студенти</a></li>
-					<li role="presentation"><a href>Відвідування</a></li>
-					<li role="presentation"><a href={% url "groups" %}>Групи</a></li>
+					<li role="presentation"
+						{% if request.path == '/' %}
+							class="active"
+						{% endif %}><a href={% url "home" %}>Студенти</a>
+					</li>
+					<li role="presentation"
+						{% if request.path == '/journal' %}
+							class="active"
+						{% endif %}><a href>Відвідування</a></li>
+					<li role="presentation"
+						{% if request.path ==  url.groups %}
+							class="active"
+						{% endif %}><a href={% url "groups" %}>Групи</a></li>
 				</ul>
 			</div>
 		</div>
